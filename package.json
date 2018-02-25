@@ -1,6 +1,6 @@
 {
   "name": "element-react-ui-components",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Element UI components for React",
   "private": false,
   "main": "dist/npm/es5/index.js",
@@ -23,7 +23,11 @@
   "keywords": [
     "Element",
     "UI",
-    "React"
+    "React",
+    "React  UI Components",
+    "UI Components",
+    "React Components",
+    "Element based UI components"
   ],
   "author": "Amitt K Sharma",
   "license": "MIT",

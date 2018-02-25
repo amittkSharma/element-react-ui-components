@@ -1,8 +1,8 @@
 # Element React
 
 [![](https://travis-ci.org/eleme/element-react.svg?branch=master)](https://travis-ci.org/eleme/element-react)
-[![](https://img.shields.io/npm/v/element-react.svg)](https://www.npmjs.com/package/element-react)
-[![](https://img.shields.io/npm/dm/element-react.svg)](https://www.npmjs.com/package/element-react)
+[![](https://img.shields.io/npm/v/element-react.svg)](https://www.npmjs.com/package/element-react-ui-components)
+[![](https://img.shields.io/npm/dm/element-react.svg)](https://www.npmjs.com/package/element-react-ui-components)
 
 [Element](https://github.com/ElemeFE/element) was initially written in [Vue](https://vuejs.org/), which has many elegant UI components, but we also love [React](https://facebook.github.io/react/), so we forked it for the React community.
 
@@ -11,7 +11,7 @@
 ### Install
 
 ```bash
-npm install element-react --save
+npm install element-react-ui-components --save
 ```
 
 Before the building, you need a style theme, here we recommend you to pick up `element-theme-default`.
