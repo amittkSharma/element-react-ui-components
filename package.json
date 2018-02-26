@@ -1,6 +1,6 @@
 {
   "name": "element-react-ui-components",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Element UI components for React",
   "private": false,
   "main": "dist/npm/es5/index.js",
@@ -13,7 +13,8 @@
     "jest": "jest",
     "lint": "eslint src libs site --quiet",
     "build": "cd build/site && webpack --progress",
-    "prepubl¡sh": "./build/scripts/prepare.sh",
+    "packagePrep": "npm run lint && npm run build && npm run typescript-test",
+    "prepubl¡sh": "npm run packagePrep && ./build/scripts/prepare.sh",
     "postpublish": "./build/scripts/release.sh"
   },
   "repository": {
