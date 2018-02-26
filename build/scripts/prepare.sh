@@ -16,6 +16,8 @@ if [ $? = 0 ]; then
   babel libs --out-dir dist/npm/es5/libs --copy-files
   babel build/npm/index.js --out-file dist/npm/es5/index.js
 
+  echo 'After 1st transfor'
+
   export BABEL_ENV=production
 
   babel src --out-dir dist/npm/es6/src --copy-files
@@ -26,3 +28,5 @@ if [ $? = 0 ]; then
 else
   echo 'Code cant be verify, plz check ~'
 fi
+
+echo 'Done !'
