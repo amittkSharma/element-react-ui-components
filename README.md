@@ -25,13 +25,13 @@ npm install element-theme-default --save
 We are die hard fans of ECMAScript 6, so we recommend you writing code in modern javascript.
 
 ```js
-import { Button } from 'element-react';
+import { Button } from 'element-react-ui-components';
 ```
 
 Also we provide an advanced way to [tree shaking](https://blog.engineyard.com/2016/tree-shaking) the code with [Rollup.js](http://rollupjs.org/) and [Webpack 2](https://webpack.github.io/)
 
 ```js
-import { Button } from 'element-react/next';
+import { Button } from 'element-react-ui-components/next';
 ```
 
 ### Config
