@@ -3,11 +3,13 @@
 # testing before publish
 npm run lint && npm run build
 
-echo 'start preparing module.'
+echo 'start preparing module.' + $?
 
 if [ $? = 0 ]; then
   # purge dist
   rm -fr dist
+
+  echo 'After if check'
 
   # babel transform es6 into es5
   babel src --out-dir dist/npm/es5/src --copy-files
