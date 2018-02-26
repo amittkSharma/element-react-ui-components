@@ -36,7 +36,7 @@ import { Button } from 'element-react-ui-components/next';
 
 ### Config
 
-With webpack, you need additional loaders to build with `element-react`.
+With webpack, you need additional loaders to build with `element-react-ui-components`.
 
 ```js
 const webpack = require('webpack');
