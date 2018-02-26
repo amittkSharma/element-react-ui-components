@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { AutoComplete, Icon } from 'element-react'
-import { AutoComplete as AutoCompleteNext } from 'element-react/next'
+import { AutoComplete, Icon } from 'element-react-ui-components'
+import { AutoComplete as AutoCompleteNext } from 'element-react-ui-components/next'
 
 class Component extends React.Component<{}, {}> {
   fetchSuggestions = (queryString, cb) => { }

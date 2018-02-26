@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Button } from 'element-react'
-import { Button as ButtonNext } from 'element-react/next'
+import { Button } from 'element-react-ui-components'
+import { Button as ButtonNext } from 'element-react-ui-components/next'
 
 class Component extends React.Component<{}, {}> {
   onClick = () => { }

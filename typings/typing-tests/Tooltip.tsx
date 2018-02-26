@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Tooltip } from 'element-react'
-import { Tooltip as TooltipNext } from 'element-react/next'
+import { Tooltip } from 'element-react-ui-components'
+import { Tooltip as TooltipNext } from 'element-react-ui-components/next'
 
 class Component extends React.Component<{}, {}> {
   render() {

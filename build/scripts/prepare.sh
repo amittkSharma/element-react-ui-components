@@ -3,6 +3,8 @@
 # testing before publish
 npm run lint && npm run build && npm run test && npm run typescript-test
 
+echo 'start preparing module.'
+
 if [ $? = 0 ]; then
   # purge dist
   rm -fr dist

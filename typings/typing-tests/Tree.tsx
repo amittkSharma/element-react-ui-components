@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Tree } from 'element-react'
-import { Tree as TreeNext } from 'element-react/next'
+import { Tree } from 'element-react-ui-components'
+import { Tree as TreeNext } from 'element-react-ui-components/next'
 
 class Component extends React.Component<{}, {}> {
   state = {

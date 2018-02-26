@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Select } from 'element-react'
-import { Select as SelectNext } from 'element-react/next'
+import { Select } from 'element-react-ui-components'
+import { Select as SelectNext } from 'element-react-ui-components/next'
 
 class Component extends React.Component<{}, {}> {
   onChange = (value) => { }

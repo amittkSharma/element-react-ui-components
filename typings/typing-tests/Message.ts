@@ -1,5 +1,5 @@
-import { Message } from 'element-react'
-import { Message as MessageNext } from 'element-react/next'
+import { Message } from 'element-react-ui-components'
+import { Message as MessageNext } from 'element-react-ui-components/next'
 
 Message('message')
 Message('message', 'success')

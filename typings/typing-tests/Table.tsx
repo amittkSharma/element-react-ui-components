@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Table } from 'element-react'
-import { Table as TableNext } from 'element-react/next'
+import { Table } from 'element-react-ui-components'
+import { Table as TableNext } from 'element-react-ui-components/next'
 
 class Component extends React.Component<{}, {}> {
   state = {
