@@ -128,15 +128,12 @@ render() {
 ### Attributes
 | Attribute      | Description          | Type      | Accepted Values       | Default  |
 |--------------------|----------------------------------------------------------|-------------------|-------------|--------|
-| trigger | how the popover is triggered | string  | click/focus/hover/manual |    click    |
+|  trigger | how the popover is triggered | string  | click/focus/hover/manual |    click    |
 |  title              | popover title | string | — | — |
 |  content        |  popover content, can be replaced with a default `slot`    | string            | — | — |
 |  width        |  popover width  | string, number            | — | Min width 150px |
 |  placement        |  popover placement  | string | top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end |  bottom |
-|  disabled       |  whether Popover is disabled  | boolean    | — |  false |
-|  value(v-model)        |  whether popover is visible  | Boolean           | — |  false |
-|  offset        |  popover offset  | number           | — |  0 |
+|  visible        |  whether popover is visible  | Boolean           | — |  false |
 |  transition     |  popover transition animation      | string             | — | fade-in-linear |
 |  visibleArrow   |  whether a tooltip arrow is displayed or not. | boolean | — | true |
-|  options        | parameters for [popper.js](https://popper.js.org/documentation.html) | object            | please refer to [popper.js](https://popper.js.org/documentation.html) | `{ boundariesElement: 'body', gpuAcceleration: false }` |
 |  popperClass        |  custom class name for popover | string | — | — |
