@@ -851,6 +851,7 @@ declare namespace ElementReact {
     hideOnClick?: boolean
     onClick?(): void
     onCommand?(command?: string, instance?): void
+    onVisibleChange?(visible: boolean): void
   }
   interface DropdownMenuProps extends ElementReactLibs.ComponentProps<{}> { }
   interface DropdownItemProps extends ElementReactLibs.ComponentProps<{}> {
