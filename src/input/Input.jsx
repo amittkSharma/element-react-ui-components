@@ -16,7 +16,8 @@ export default class Input extends Component {
     type: 'text',
     autosize: false,
     rows: 2,
-    autoComplete: 'off'
+    autoComplete: 'off',
+    validating: false
   }
 
   constructor(props: Object) {
@@ -191,9 +192,7 @@ Input.propTypes = {
 
   // autoComplete
   autoComplete: PropTypes.string,
-  inputSelect: PropTypes.func,
 
   // form related
-  form: PropTypes.string,
   validating: PropTypes.bool,
 }
