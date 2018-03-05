@@ -478,15 +478,21 @@ render() {
 |-------------  |---------------- |---------------- |---------------------- |-------- |
 | placeholder   | 输入框占位文本   | string          | — | — |
 | disabled      | 禁用            | boolean         | — | false   |
+| name | same as `name` in native input | string | — | — |
+| size | size of Input, works when `type` is not 'textarea' | string | large/small/mini | — |
+| icon          | 输入框尾部图标    | string          | — | — |
 | value         | 必填值输入绑定值   | string  | — | — |
-| customItem  | 通过该参数指定自定义的输入建议列表项的组件名 | Element  | — | — |
 | fetchSuggestions | 返回输入建议的方法，仅当你的输入建议数据 resolve 时，通过调用 callback(data:[]) 来返回它  | Function(queryString, callback)  | — | — |
 | popperClass | Autocomplete 下拉列表的类名 | string | — | — |
 | triggerOnFocus | 是否在输入框 focus 时显示建议列表 | boolean | — | true |
 | onIconClick | 点击图标的回调函数 | function | — | — |
-| icon          | 输入框尾部图标    | string          | — | — |
+| append | set append element | string/element | - | - |
+| prepend | set prepend element | string/element | - | - |
 
 ### Autocomplete Events
 | 事件名称 | 说明 | 回调参数 |
 |---------|--------|---------|
 | onSelect | 点击选中建议项时触发 | 选中建议项 |
+| onChange | hook function for control input | — |
+| onFocus | triggers when a suggestion is focused | suggestion being clicked |
+| onBlur | hook function for suggestion loses focus | suggestion being clicked |

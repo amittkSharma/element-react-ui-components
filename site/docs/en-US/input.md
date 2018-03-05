@@ -355,18 +355,24 @@ render() {
 
 | Attribute | Description | Type | Options | Default
 |----| ----| ----| ---- | -----|
-|placeholder| the placeholder of Autocomplete| string | — | — |
-|disabled | whether Autocomplete is disabled  | boolean | — | false|
-|icon | icon name | string | — | — |
-|value | binding value | string | — | — |
-|customItem | component name of your customized suggestion list item | string | — | — |
-|fetchSuggestions | a method to fetch input suggestions. When suggestions are ready, invoke `callback(data:[])` to return them to Autocomplete | Function(queryString, callback) | — | — |
+| placeholder| the placeholder of Autocomplete| string | — | — |
+| disabled | whether Autocomplete is disabled  | boolean | — | false|
+| name | same as `name` in native input | string | — | — |
+| size | size of Input, works when `type` is not 'textarea' | string | large/small/mini | — |
+| icon | icon name | string | — | — |
+| value | binding value | string | — | — |
+| fetchSuggestions | a method to fetch input suggestions. When suggestions are ready, invoke `callback(data:[])` to return them to Autocomplete | Function(queryString, callback) | — | — |
 | popperClass | custom class name for autocomplete's dropdown | string | — | — |
 | triggerOnFocus | whether show suggestions when input focus | boolean | — | true |
 | onIconClick | hook function when clicking on the input icon | function | — | — |
+| append | set append element | string/element | - | - |
+| prepend | set prepend element | string/element | - | - |
 
 ### Autocomplete Events
 
 | Event Name | Description | Parameters |
 |----| ----| ----|
 | onSelect | triggers when a suggestion is clicked | suggestion being clicked |
+| onChange | hook function for control input | — |
+| onFocus | triggers when a suggestion is focused | suggestion being clicked |
+| onBlur | hook function for suggestion loses focus | suggestion being clicked |

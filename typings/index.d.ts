@@ -909,6 +909,8 @@ declare namespace ElementReact {
     icon?: React.ReactElement<any> | string
     append?: React.ReactElement<any>
     prepend?: React.ReactElement<any>
+    onFocus?(e: React.SyntheticEvent<HTMLButtonElement>): void
+    onBlur?(e: React.SyntheticEvent<HTMLButtonElement>): void
   }
   export class AutoComplete extends ElementReactLibs.Component<AutoCompleteProps, {}> { }
 
