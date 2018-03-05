@@ -257,8 +257,8 @@ declare namespace ElementReact {
 
   // Radio
   interface RadioProps extends ElementReactLibs.ComponentProps<{}> {
-    value: string | number | boolean
-    onChange?(value?: string | number | boolean): void
+    value: string | number
+    onChange?(value?: string | number): void
     disabled?: boolean
     checked?: boolean
     name?: string
