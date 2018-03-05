@@ -820,6 +820,9 @@ declare namespace ElementReact {
     multiple?: boolean
     placeholder?: string
     onChange?(value?): void
+    onVisibleChange?(visible?: boolean): void,
+    onRemoveTag?(value?): void,
+    onClear?(): void
   }
   interface SelectOptionProps extends ElementReactLibs.ComponentProps<{}> {
     value: any
@@ -828,7 +831,6 @@ declare namespace ElementReact {
     disabled?: boolean
   }
   interface SelectOptionGroupProps extends ElementReactLibs.ComponentProps<{}> {
-    // disabled?: boolean
     label?: string
   }
   class SelectOption extends ElementReactLibs.Component<SelectOptionProps, {}> { }
