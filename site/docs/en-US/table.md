@@ -1372,7 +1372,10 @@ render() {
 ### Table Attributes
 | Attribute      | Description          | Type      | Accepted Values     | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
+| style | table style | Object | — | — |
+| className | table class | string | — | — |
 | data | table data | array | — | — |
+| columns | table columns | Column[] | — | — |
 | height | Table's height. By default it has an `auto` height. If its value is a number, the height is measured in pixels; if its value is a string, the height is affected by external styles | string/number | — | — |
 | maxHeight | Table's maxHeight. The height of the table starts from `auto` until it reaches the maxHeight limit. The `maxHeight` is measured in pixels, same as `height` | string/number | — | — |
 | stripe | whether table is striped | boolean | — | false |
@@ -1391,6 +1394,7 @@ render() {
 | showSummary | whether to display a summary row | Boolean | — | false |
 | sumText | displayed text for the first column of summary row | String | — | Sum |
 | summaryMethod | custom summary method | Function({ columns, data }) | — | — |
+| tooltipEffect | tooltip effect | string | 'dark'/'light' | — |
 
 ### Table Events
 | Event Name | Description | Parameters |
@@ -1427,6 +1431,7 @@ render() {
 | label | column label | string | — | — |
 | columnKey | column's key. If you need to use the onFilterChange event, you need this attribute to identify which column is being filtered | string | string | — | — |
 | prop |  field name. You can also use its alias: `property` | string | — | — |
+| property |  field name. | string | — | — |
 | width | column width | string | — | — |
 | minWidth | column minimum width. Columns with `width` has a fixed width, while columns with `minWidth` has a width that is distributed in proportion | string | — | — |
 | fixed | whether column is fixed at left/right. Will be fixed at left if `true` | string/boolean | true/left/right | — |
@@ -1446,3 +1451,4 @@ render() {
 | filterMultiple | whether data filtering supports multiple options | Boolean | — | true |
 | filterMethod | data filtering method. If `filterMultiple` is on, this method will be called multiple times for each row, and a row will display if one of the calls returns `true` | Function(value, row) | — | — |
 | filteredValue | filter value for selected data, might be useful when table header is rendered with `renderHeader` | Array | — | — |
+| subColumns | array of sub columns | Column[] | — | — |

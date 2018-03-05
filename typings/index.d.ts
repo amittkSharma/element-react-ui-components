@@ -100,6 +100,7 @@ declare module "element-react-ui-components/next" {
 
 declare namespace ElementReact {
   type typeColor = 'success' | 'info' | 'warning'
+  type strOrNum = string | number
   type I18nLang = any
   // i18n
   interface I18n {
@@ -605,36 +606,119 @@ declare namespace ElementReact {
 
   // Table
   interface TableColumn {
+    type?: string
+    columnKey?: string
     label?: string
     prop?: string
     property?: string
-    type?: string
-    minWidth?: number
     width?: number
-    align?: string
-    sortable?: boolean
-    sortMethod?: () => void
+    minWidth?: number
+    fixed?: true | 'left' | 'right'
+    render?: (row: Object, column: _TableColumn, index: number) => Object
+    renderHeader?: () => void
+    sortable?: boolean | 'custom'
+    sortMethod?: (a: Object, b: Object) => boolean
     resizable?: boolean
-    formatter?: () => void
-    selectable?: boolean
-    fixed?: boolean | string
-    filterMethod?: () => void
-    filters?: Object[]
-    render?: () => void
+    align?: 'left' | 'center' | 'right'
+    headerAlign?: 'left' | 'center' | 'right'
+    className?: string
+    labelClassName?: string
+    selectable?: (row: Object, index: number) => boolean
+    reserveSelection?: boolean
+    filters?: { text: any, value: any }[]
+    filterPlacement?: string
+    filterMultiple?: boolean
+    filterMethod?: (value: any, row: Object) => boolean
+    filteredValue?: strOrNum[] | strOrNum
+    subColumns?: TableColumn[]
+  }
+  interface _TableColumn {
+    id: string
+    type?: string
+    columnKey: string
+    label?: string
+    prop?: string
+    property?: string
+    width?: number
+    minWidth?: number
+    fixed?: true | 'left' | 'right'
+    sortable?: boolean | 'custom'
+    sortMethod?: (a: Object, b: Object) => boolean
+    resizable?: boolean
+    showOverflowTooltip?: boolean
+    align?: 'left' | 'center' | 'right'
+    headerAlign?: 'left' | 'center' | 'right'
+    className?: string
+    labelClassName?: string
+    selectable?: (row: Object, index: number) => boolean
+    reserveSelection?: boolean
+    filters?: { text: any, value: any }[]
+    filterPlacement?: string
+    filterMultiple?: boolean
+    filterMethod?: (value: any, row: Object) => boolean
+    filteredValue?: strOrNum[] | strOrNum
+    realWidth?: number
+    render?: (row: Object, column: _TableColumn, index: number) => Object
+    renderHeader?: (column: _TableColumn) => Object
+    filterable?: boolean
+    filterOpened?: boolean
+    rowSpan?: number
+    colSpan?: number
+    level?: number
+    subColumns?: _TableColumn[]
+  }
+  interface TableStoreState {
+    sortedData?: Object[]
+    data?: Object[]
+    fixedColumns?: _TableColumn[]
+    rightFixedColumns?: _TableColumn[]
+    columnRows?: _TableColumn[][]
+    columns?: _TableColumn[]
+    isComplex?: boolean
+    defaultExpandAll?: boolean
+  }
+  interface TableLayoutState {
+    height?: strOrNum
+    gutterWidth?: number
+    tableHeight?: number
+    headerHeight?: number
+    bodyHeight?: number
+    footerHeight?: number
+    fixedBodyHeight?: number
+    viewportHeight?: number
+    scrollX?: boolean
+    scrollY?: boolean
   }
   interface TableProps extends ElementReactLibs.ComponentProps<{}> {
-    columns?: TableColumn[]
+    style?: Object
+    className?: string
     data?: Object[]
-    height?: number
+    columns?: TableColumn[]
+    height?: strOrNum
+    maxHeight?: strOrNum
     stripe?: boolean
     border?: boolean
     fit?: boolean
-    rowClassName?(row?, index?): void
-    style?: Object
+    showHeader?: boolean
     highlightCurrentRow?: boolean
-    onCurrentChange?(): void
-    onSelectAll?(): void
-    onSelectChange?(): void
+    currentRowKey?: strOrNum | strOrNum[]
+    rowClassName?: ((row: Object, index: number) => string) | string
+    rowStyle?: ((row: Object, index: number) => Object) | Object
+    rowKey?: ((row: Object) => strOrNum) | string
+    emptyText?: string
+    defaultExpandAll?: boolean
+    expandRowKeys?: strOrNum[]
+    defaultSort?: {
+        prop?: string
+        order?: 'ascending' | 'descending'
+    }
+    tooltipEffect?: 'dark' | 'light'
+    showSummary?: boolean
+    sumText?: string
+    summaryMethod?: (column: TableColumn[], data: Object[]) => any
+    store?: TableStoreState
+    renderExpanded?: (row: Object, rowIndex: number) => Object
+    layout?: TableLayoutState
   }
   export class Table extends ElementReactLibs.Component<TableProps, {}> { }
 
