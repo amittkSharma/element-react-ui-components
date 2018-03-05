@@ -143,7 +143,6 @@ name | native 'name' attribute | string    |      —         |     —
 --- | --- | ---
 onChange | triggers when the bound value changes | the label value of the chosen radio | value
 
-
 ### Radio-group Attributes
 
  Attribute      | Description          | Type      | Accepted Values       | Default
