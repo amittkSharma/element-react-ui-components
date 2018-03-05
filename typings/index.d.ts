@@ -751,6 +751,7 @@ declare namespace ElementReact {
     labelWidth?: string | number
     labelSuffix?: string
     inline?: boolean
+    onSubmit?(): void
   }
   interface FormItemProps extends ElementReactLibs.ComponentProps<{}> {
     label?: string
