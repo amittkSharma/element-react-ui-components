@@ -140,6 +140,10 @@ get style() {
 
 render() {
   const { value, total, checked } = this.state;
+  const footer = {
+    noChecked: {total},
+    hasChecked: {checked/total}
+  }
 
   return (
     <Transfer
@@ -150,10 +154,7 @@ render() {
       renderContent={this.renderFunc}
       titles={['Source', 'Target']}
       buttonTexts={['To left', 'To right']}
-      footerFormat={{
-        noChecked: {total},
-        hasChecked: {checked/total}
-      }}
+      footerFormat={footer}
       onChange={this._handleChange}
       data={this.data}
       leftFooter={
