@@ -526,7 +526,12 @@ onDomainChange(index, value) {
 }
 
 render() {
- const ruleObj = {}
+ const ruleObj = {
+  type: "object", 
+  required: true,
+  fields: {
+    value: { required: true, message: "Domain can not be null", trigger: "blur" }
+  }}
   return (
     <Form ref="form" model={this.state.form} rules={this.state.rules} labelWidth="100" className="demo-dynamic">
       <Form.Item prop="email" label="Email">
