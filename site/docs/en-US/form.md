@@ -539,9 +539,9 @@ render() {
               label={`Domain ${index}`}
               prop={`domains:${index}`}
               rules={{
-                type: 'object', required: true,
+                type: "object", required: true,
                 fields: {
-                  value: { required: true, message: 'Domain can not be null', trigger: 'blur' }
+                  value: { required: true, message: "Domain can not be null", trigger: "blur" }
                 }
               }}
             >
