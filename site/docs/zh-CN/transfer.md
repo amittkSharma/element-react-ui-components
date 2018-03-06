@@ -139,7 +139,11 @@ get style() {
 }
 
 render() {
-  const { value } = this.state;
+  const { value, total, checked } = this.state;
+  const footer = {
+    noChecked: {total},
+    hasChecked: {checked/total}
+  }
 
   return (
     <Transfer
@@ -150,10 +154,7 @@ render() {
       renderContent={this.renderFunc}
       titles={['Source', 'Target']}
       buttonTexts={['到左边', '到右边']}
-      footerFormat={{
-        noChecked: '${total}',
-        hasChecked: '${checked}/${total}'
-      }}
+      footerFormat={footer}
       onChange={this._handleChange}
       data={this.data}
       leftFooter={
