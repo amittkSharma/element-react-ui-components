@@ -139,7 +139,7 @@ get style() {
 }
 
 render() {
-  const { value } = this.state;
+  const { value, total, checked } = this.state;
 
   return (
     <Transfer
@@ -151,8 +151,8 @@ render() {
       titles={['Source', 'Target']}
       buttonTexts={['To left', 'To right']}
       footerFormat={{
-        noChecked: {`${total}`},
-        hasChecked: {`${checked}/${total}`}
+        noChecked: {total},
+        hasChecked: {checked/total}
       }}
       onChange={this._handleChange}
       data={this.data}
