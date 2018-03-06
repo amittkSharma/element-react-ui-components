@@ -223,6 +223,7 @@ render() {
 ### Attributes
 | Attribute | Description | Type  | Accepted Values | Default |
 |---------- |-------- |---------- |-------------  |-------- |
+| value | checked data | array[] | — | [ ] |
 | data | data source | array[{ key, label, disabled }] | — | [ ] |
 | filterable | whether Transfer is filterable | boolean | — | false |
 | filterPlaceholder | placeholder for the filter input | string | — | Enter keyword |
