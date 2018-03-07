@@ -526,6 +526,12 @@ onDomainChange(index, value) {
 }
 
 render() {
+ const ruleObj = {
+  type: "object", 
+  required: true,
+  fields: {
+    value: { required: true, message: "Domain can not be null", trigger: "blur" }
+  }}
   return (
     <Form ref="form" model={this.state.form} rules={this.state.rules} labelWidth="100" className="demo-dynamic">
       <Form.Item prop="email" label="Email">
@@ -538,12 +544,7 @@ render() {
               key={index}
               label={`Domain ${index}`}
               prop={`domains:${index}`}
-              rules={{
-                type: 'object', required: true,
-                fields: {
-                  value: { required: true, message: 'Domain can not be null', trigger: 'blur' }
-                }
-              }}
+              rules={ ruleObj }
             >
               <Input value={domain.value} onChange={this.onDomainChange.bind(this, index)}></Input>
               <Button onClick={this.removeDomain.bind(this, domain)}>Delete</Button>
