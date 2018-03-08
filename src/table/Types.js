@@ -54,7 +54,6 @@ export type _Column = {
   filterMultiple: boolean,
   filterMethod?: (value: any, row: Object) => boolean,
   filteredValue?: Array<strOrNum> | strOrNum,
-  subColumns?: Array<Column>,
   realWidth: number,
   render: (row: Object, column: _Column, index: number) => Object,
   renderHeader: (column: _Column) => Object,

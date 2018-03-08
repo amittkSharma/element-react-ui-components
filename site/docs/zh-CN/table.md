@@ -1453,7 +1453,10 @@ render() {
 ### Table Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
+| style | table style | Object | — | — |
+| className | table class | string | — | — |
 | data | 显示的数据 | array | — | — |
+| columns | table columns | Column[] | — | — |
 | height | table 的高度，默认高度为空，即自动高度，单位 px | string, number | — | — |
 | maxHeight | Table 的最大高度 | string/number | — | — |
 | stripe | 是否为斑马纹 table | boolean | — | false |
@@ -1472,7 +1475,7 @@ render() {
 | showSummary | 是否在表尾显示合计行 | Boolean | - | false |
 | sumText | 合计行第一列的文本 | String | - | 合计 |
 | summeryMethod | 自定义的合计计算方法 | Function({ columns, data }) | - | - |
-
+| tooltipEffect | tooltip effect | string | 'dark'/'light' | — |
 
 
 ### Table Events
@@ -1509,6 +1512,7 @@ render() {
 | columnKey | column 的 key，如果需要使用 onFilterChange 事件，则需要此属性标识是哪个 column 的筛选条件 | string | — | — |
 | label | 显示的标题 | string | — | — |
 | prop | 对应列内容的字段名，也可以使用 property 属性 | string | — | — |
+| property |  field name. | string | — | — |
 | width | 对应列的宽度 | string | — | — |
 | minWidth | 对应列的最小宽度，与 width 的区别是 width 是固定的，min-width 会把剩余宽度按比例分配给设置了 min-width 的列 | string | — | — |
 | fixed | 列是否固定在左侧或者右侧，true 表示固定在左侧 | string, boolean | true, left, right | - |
@@ -1528,3 +1532,4 @@ render() {
 | filterMultiple | 数据过滤的选项是否多选 | Boolean | — | true |
 | filterMethod | 数据过滤使用的方法，如果是多选的筛选项，对每一条数据会执行多次，任意一次返回 true 就会显示。 | Function(value, row) | — | — |
 | filteredValue | 选中的数据过滤项，如果需要自定义表头过滤的渲染方式，可能会需要此属性。 | Array | — | — |
+| subColumns | array of sub columns | Column[] | — | — |

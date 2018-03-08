@@ -100,6 +100,7 @@ declare module "element-react-ui-components/next" {
 
 declare namespace ElementReact {
   type typeColor = 'success' | 'info' | 'warning'
+  type strOrNum = string | number
   type I18nLang = any
   // i18n
   interface I18n {
@@ -151,6 +152,7 @@ declare namespace ElementReact {
     type?: 'flex'
     justify?: 'start' | 'end' | 'center' | 'space-around' | 'space-between'
     align?: 'top' | 'middle' | 'bottom'
+    tag?: string
   }
   class Row extends ElementReactLibs.Component<RowProps, {}> { }
   interface ColProps extends ElementReactLibs.ComponentProps<{}> {
@@ -163,6 +165,7 @@ declare namespace ElementReact {
     sm?: number | string | Object
     md?: number | string | Object
     lg?: number | string | Object
+    tag?: string
   }
   class Col extends ElementReactLibs.Component<ColProps, {}> { }
   export const Layout: {
@@ -181,7 +184,7 @@ declare namespace ElementReact {
   // Message
   type Message = any
   interface MessageOptions {
-    message: string
+    message: string | React.ReactElement<any>
     type?: typeColor | 'error'
     iconClass?: string
     customClass?: string
@@ -204,7 +207,7 @@ declare namespace ElementReact {
     modal?: 'alert' | 'confirm' | 'prompt'
     type?: typeColor | 'error'
     title?: string
-    message?: string
+    message?: string | React.ReactElement<any>
     showInput?: boolean
     showClose?: boolean
     showCancelButton?: boolean
@@ -215,8 +218,12 @@ declare namespace ElementReact {
     confirmButtonClass?: string
     inputPlaceholder?: string
     inputPattern?: RegExp
-    inputValidator?(): string | boolean
+    inputValidator?(value: string): string | boolean
     inputErrorMessage?: string
+    inputValue?: string
+    inputType?: string
+    promise?: Object
+    onClose?: void
   }
   export const MessageBox: {
     alert(message: string, props?: NextOptions): Promise<void>
@@ -251,8 +258,8 @@ declare namespace ElementReact {
 
   // Radio
   interface RadioProps extends ElementReactLibs.ComponentProps<{}> {
-    value: string | number | boolean
-    onChange?(value?: string | number | boolean): void
+    value: string | number
+    onChange?(value?: string | number): void
     disabled?: boolean
     checked?: boolean
     name?: string
@@ -269,6 +276,7 @@ declare namespace ElementReact {
     value: string | number
     disabled?: boolean
     name?: string
+    size?: 'large' | 'small'
   }
   class RadioGroup extends ElementReactLibs.Component<RadioGroupProps, {}> { }
   class RadioButton extends ElementReactLibs.Component<RadioButtonProps, {}> { }
@@ -288,9 +296,8 @@ declare namespace ElementReact {
     lockScroll?: boolean
     closeOnClickModal?: boolean
     closeOnPressEscape?: boolean
+    showClose?: boolean
     onCancel?(): void
-    onOpen?(...args): any
-    opClose?(...args): any
   }
   interface DialogBodyProps extends ElementReactLibs.ComponentProps<{}> { }
   interface DialogFooterProps extends ElementReactLibs.ComponentProps<{}> { }
@@ -352,10 +359,10 @@ declare namespace ElementReact {
     addable?: boolean
     editable?: boolean
     // TODO: add tab type
-    onTabClick?(tab?: any): void
-    onTabRemove?(name?: string): void
+    onTabClick?(tab?: React.ReactElement<any>, e?: React.SyntheticEvent<HTMLInputElement>): void
+    onTabRemove?(tab?: React.ReactElement<any>, e?: React.SyntheticEvent<HTMLInputElement>): void
     onTabAdd?(): void
-    onTabEdit?(targetName?: string, action?: string): void
+    onTabEdit?(targetName?: string, tab?: React.ReactElement<any>): void
   }
   interface TabsPaneProps extends ElementReactLibs.ComponentProps<{}> {
     label?: string | React.ReactElement<any>
@@ -408,6 +415,7 @@ declare namespace ElementReact {
     setChecked(data: any, checked: boolean, deep?: boolean): void
   }
 
+  // Input
   interface InputProps extends ElementReactLibs.ComponentProps<{}>
   {
     type?: string // valid value are 'text' & 'textarea'
@@ -419,17 +427,18 @@ declare namespace ElementReact {
     autoFocus?: boolean
     maxLength?: number
     minLength?: number
-    defaultValue?: any
-    value?: any
+    defaultValue?: string | number
+    value?: string | number
 
     // type !== 'textarea'
     size?: 'large' | 'small' | 'mini'
-    prepend?: any
-    append?: any
+    prepend?: string | React.ReactElement<any>
+    append?: string | React.ReactElement<any>
 
     // type === 'textarea'
     autosize?: boolean | Object
     rows?: number
+    resize?: 'none' | 'both' | 'horizontal' | 'vertical'
 
     // event
     onFocus?(e?: React.SyntheticEvent<HTMLInputElement>): void
@@ -441,16 +450,9 @@ declare namespace ElementReact {
 
     // autoComplete
     autoComplete?: string
-    inputSelect?(item?): void
 
     // form related
-    form?: string
     validating?: boolean
-
-    max?: string | number
-    min?: string | number
-    step?: string | number
-    resize?: 'none' | 'both' | 'horizontal' | 'vertical'
   }
   export class Input extends ElementReactLibs.Component<InputProps, {}> { }
 
@@ -572,7 +574,7 @@ declare namespace ElementReact {
     size?: 'large' | 'small'
     fill?: string
     textColor?: string
-    value?: any
+    value?: string[]
     onChange?(value?): void
   }
   interface CheckboxButtonProps extends ElementReactLibs.ComponentProps<{}> { }
@@ -597,43 +599,126 @@ declare namespace ElementReact {
     range?: boolean
     vertical?: boolean
     height?: string
-    formatTooltip?(): void
-    onChange?(value): void
+    formatTooltip?(value: number | number[]): void
+    onChange?(value: number | number[]): void
   }
   export class Slider extends ElementReactLibs.Component<SliderProps, {}> { }
 
   // Table
   interface TableColumn {
+    type?: string
+    columnKey?: string
     label?: string
     prop?: string
     property?: string
-    type?: string
-    minWidth?: number
     width?: number
-    align?: string
-    sortable?: boolean
-    sortMethod?: () => void
+    minWidth?: number
+    fixed?: true | 'left' | 'right'
+    render?: (row: Object, column: _TableColumn, index: number) => Object
+    renderHeader?: () => void
+    sortable?: boolean | 'custom'
+    sortMethod?: (a: Object, b: Object) => boolean
     resizable?: boolean
-    formatter?: () => void
-    selectable?: boolean
-    fixed?: boolean | string
-    filterMethod?: () => void
-    filters?: Object[]
-    render?: () => void
+    align?: 'left' | 'center' | 'right'
+    headerAlign?: 'left' | 'center' | 'right'
+    className?: string
+    labelClassName?: string
+    selectable?: (row: Object, index: number) => boolean
+    reserveSelection?: boolean
+    filters?: { text: any, value: any }[]
+    filterPlacement?: string
+    filterMultiple?: boolean
+    filterMethod?: (value: any, row: Object) => boolean
+    filteredValue?: strOrNum[] | strOrNum
+    subColumns?: TableColumn[]
+  }
+  interface _TableColumn {
+    id: string
+    type?: string
+    columnKey: string
+    label?: string
+    prop?: string
+    property?: string
+    width?: number
+    minWidth?: number
+    fixed?: true | 'left' | 'right'
+    sortable?: boolean | 'custom'
+    sortMethod?: (a: Object, b: Object) => boolean
+    resizable?: boolean
+    showOverflowTooltip?: boolean
+    align?: 'left' | 'center' | 'right'
+    headerAlign?: 'left' | 'center' | 'right'
+    className?: string
+    labelClassName?: string
+    selectable?: (row: Object, index: number) => boolean
+    reserveSelection?: boolean
+    filters?: { text: any, value: any }[]
+    filterPlacement?: string
+    filterMultiple?: boolean
+    filterMethod?: (value: any, row: Object) => boolean
+    filteredValue?: strOrNum[] | strOrNum
+    realWidth?: number
+    render?: (row: Object, column: _TableColumn, index: number) => Object
+    renderHeader?: (column: _TableColumn) => Object
+    filterable?: boolean
+    filterOpened?: boolean
+    rowSpan?: number
+    colSpan?: number
+    level?: number
+    subColumns?: _TableColumn[]
+  }
+  interface TableStoreState {
+    sortedData?: Object[]
+    data?: Object[]
+    fixedColumns?: _TableColumn[]
+    rightFixedColumns?: _TableColumn[]
+    columnRows?: _TableColumn[][]
+    columns?: _TableColumn[]
+    isComplex?: boolean
+    defaultExpandAll?: boolean
+  }
+  interface TableLayoutState {
+    height?: strOrNum
+    gutterWidth?: number
+    tableHeight?: number
+    headerHeight?: number
+    bodyHeight?: number
+    footerHeight?: number
+    fixedBodyHeight?: number
+    viewportHeight?: number
+    scrollX?: boolean
+    scrollY?: boolean
   }
   interface TableProps extends ElementReactLibs.ComponentProps<{}> {
-    columns?: TableColumn[]
+    style?: Object
+    className?: string
     data?: Object[]
-    height?: number
+    columns?: TableColumn[]
+    height?: strOrNum
+    maxHeight?: strOrNum
     stripe?: boolean
     border?: boolean
     fit?: boolean
-    rowClassName?(row?, index?): void
-    style?: Object
+    showHeader?: boolean
     highlightCurrentRow?: boolean
-    onCurrentChange?(): void
-    onSelectAll?(): void
-    onSelectChange?(): void
+    currentRowKey?: strOrNum | strOrNum[]
+    rowClassName?: ((row: Object, index: number) => string) | string
+    rowStyle?: ((row: Object, index: number) => Object) | Object
+    rowKey?: ((row: Object) => strOrNum) | string
+    emptyText?: string
+    defaultExpandAll?: boolean
+    expandRowKeys?: strOrNum[]
+    defaultSort?: {
+        prop?: string
+        order?: 'ascending' | 'descending'
+    }
+    tooltipEffect?: 'dark' | 'light'
+    showSummary?: boolean
+    sumText?: string
+    summaryMethod?: (column: TableColumn[], data: Object[]) => any
+    store?: TableStoreState
+    renderExpanded?: (row: Object, rowIndex: number) => Object
+    layout?: TableLayoutState
   }
   export class Table extends ElementReactLibs.Component<TableProps, {}> { }
 
@@ -652,6 +737,9 @@ declare namespace ElementReact {
     offValue?: number | string | boolean
     name?: string
     onChange?(value: number | string | boolean): void
+    onBlur?(e: React.SyntheticEvent<HTMLButtonElement>): void
+    onFocus?(e: React.SyntheticEvent<HTMLButtonElement>): void
+    allowFocus?: boolean
   }
   export class Switch extends ElementReactLibs.Component<SwitchProps, {}> { }
 
@@ -663,6 +751,7 @@ declare namespace ElementReact {
     labelWidth?: string | number
     labelSuffix?: string
     inline?: boolean
+    onSubmit?(): void
   }
   interface FormItemProps extends ElementReactLibs.ComponentProps<{}> {
     label?: string
@@ -731,6 +820,9 @@ declare namespace ElementReact {
     multiple?: boolean
     placeholder?: string
     onChange?(value?): void
+    onVisibleChange?(visible?: boolean): void,
+    onRemoveTag?(value?): void,
+    onClear?(): void
   }
   interface SelectOptionProps extends ElementReactLibs.ComponentProps<{}> {
     value: any
@@ -739,7 +831,6 @@ declare namespace ElementReact {
     disabled?: boolean
   }
   interface SelectOptionGroupProps extends ElementReactLibs.ComponentProps<{}> {
-    // disabled?: boolean
     label?: string
   }
   class SelectOption extends ElementReactLibs.Component<SelectOptionProps, {}> { }
@@ -760,6 +851,7 @@ declare namespace ElementReact {
     hideOnClick?: boolean
     onClick?(): void
     onCommand?(command?: string, instance?): void
+    onVisibleChange?(visible: boolean): void
   }
   interface DropdownMenuProps extends ElementReactLibs.ComponentProps<{}> { }
   interface DropdownItemProps extends ElementReactLibs.ComponentProps<{}> {
@@ -817,6 +909,8 @@ declare namespace ElementReact {
     icon?: React.ReactElement<any> | string
     append?: React.ReactElement<any>
     prepend?: React.ReactElement<any>
+    onFocus?(e: React.SyntheticEvent<HTMLButtonElement>): void
+    onBlur?(e: React.SyntheticEvent<HTMLButtonElement>): void
   }
   export class AutoComplete extends ElementReactLibs.Component<AutoCompleteProps, {}> { }
 
@@ -930,6 +1024,7 @@ declare namespace ElementReact {
     showAllLevels?: boolean
     debounce?: number
     activeItemChange?(param?: any[]): void
+    beforeFilter?(value?: string): void
     onChange?(value?): void
   }
   export class Cascader extends ElementReactLibs.Component<CascaderProps, {}> { }

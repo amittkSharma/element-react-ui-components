@@ -246,6 +246,9 @@ render() {
 | disabled  | if the checkbox is disabled   | boolean   |  — | false   |
 | checked  | if the checkbox is checked   | boolean   |  — | false   |
 | indeterminate  | same as `indeterminate` in native checkbox | boolean   |  — | false   |
+| focus  | if the checkbox is focused | boolean   |  — | false   |
+
+### CheckboxButton extends Checkbox
 
 ### Checkbox-group Attributes
 | Attribute      | Description         | Type    | Options                         | Default|
@@ -255,6 +258,7 @@ render() {
 |textColor | font color when button is active | string   | — | #ffffff   |
 | min     | minimum number of checkbox checked   | number    |       —        |     —    |
 | max     | maximum number of checkbox checked   | number    |       —        |     —    |
+| value   | checkbox options | string[] |       —        |     []    |
 
 ### Checkbox-group Events
 | Event Name | Description | Parameters |

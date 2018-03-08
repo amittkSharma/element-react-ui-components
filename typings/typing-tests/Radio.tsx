@@ -13,7 +13,6 @@ class Component extends React.Component<{}, {}> {
       <div>
         <Radio value="1" />
         <Radio value={1}>111</Radio>
-        <Radio value={true} />
         <Radio value="1" onChange={this.onChange} disabled={true} checked={false} name="111" className="className" style={{ width: 100 }} />
 
         <Radio.Group>
@@ -34,7 +33,6 @@ class Component extends React.Component<{}, {}> {
 
         <RadioNext value="1" />
         <RadioNext value={1}>111</RadioNext>
-        <RadioNext value={true} />
         <RadioNext value="1" onChange={this.onChange} disabled={true} checked={false} name="111" className="className" style={{ width: 100 }} />
 
         <RadioNext.Group>
