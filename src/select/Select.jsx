@@ -827,8 +827,18 @@ class Select extends Component {
             <div ref="tags" className="el-select__tags" onClick={this.toggleMenu.bind(this)} style={{
               maxWidth: inputWidth - 32
             }}>
-              {
-                selected.map(el => {
+              {selected.length > 1
+                 ?     <Tag
+                    type="primary"
+                    key={selected.length}
+                    hit={false}
+                    closable={false}
+                    closeTransition={false}
+                  >
+                    <span className="el-select__tags-text">{`${selected[0].currentLabel()} and +${selected.length-1} more options`}</span>
+                  </Tag>  
+                :
+                  selected.map(el => {
                   return (
                     <Tag
                       type="primary"
