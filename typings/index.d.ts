@@ -605,7 +605,7 @@ declare namespace ElementReact {
   export class Slider extends ElementReactLibs.Component<SliderProps, {}> { }
 
   // Table
-  interface TableColumn {
+  export interface TableColumn {
     type?: string
     columnKey?: string
     label?: string
