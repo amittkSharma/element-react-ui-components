@@ -818,6 +818,7 @@ declare namespace ElementReact {
     remoteMethod?(): void
     filterMethod?(): void
     multiple?: boolean
+    summaryView?: boolean
     placeholder?: string
     onChange?(value?): void
     onVisibleChange?(visible?: boolean): void,

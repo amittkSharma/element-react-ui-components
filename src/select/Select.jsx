@@ -817,7 +817,7 @@ class Select extends Component {
   }
 
   render() {
-    const { multiple, size, disabled, filterable, loading } = this.props;
+    const { multiple, size, disabled, filterable, loading, summaryView } = this.props;
     const { selected, inputWidth, inputLength, query, selectedLabel, visible, options, filteredOptionsCount, currentPlaceholder } = this.state;
 
     return (
@@ -827,7 +827,7 @@ class Select extends Component {
             <div ref="tags" className="el-select__tags" onClick={this.toggleMenu.bind(this)} style={{
               maxWidth: inputWidth - 32
             }}>
-              {selected.length > 1
+              {selected.length > 1 && summaryView
                  ?     <Tag
                     type="primary"
                     key={selected.length}
@@ -983,6 +983,7 @@ Select.propTypes = {
   remoteMethod: PropTypes.func,
   filterMethod: PropTypes.func,
   multiple: PropTypes.bool,
+  summaryView: PropTypes.bool,
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
   onVisibleChange: PropTypes.func,
