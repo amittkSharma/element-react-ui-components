@@ -444,6 +444,7 @@ render() {
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | value | set value | any | — | — |
 | multiple | whether multiple-select is activated | boolean | — | false |
+| summaryView | To show all selected items in multiple select or as summary | boolean | — | false |
 | disabled | whether Select is disabled | boolean | — | false |
 | size | size of Input | string | large/small/mini | — |
 | clearable | whether single select can be cleared | boolean | — | false |
