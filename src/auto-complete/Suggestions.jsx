@@ -73,7 +73,7 @@ export default class Suggestions extends Component {
             })}
             style={{
               width: dropdownWidth,
-              zIndex: 1
+              zIndex: 10
             }}
           >
             <Scrollbar
