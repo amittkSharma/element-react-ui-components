@@ -842,7 +842,7 @@ class Select extends Component {
                   return (
                     <Tag
                       type="primary"
-                      key={el.props.value}
+                      key={el.props.id}
                       hit={el.hitState}
                       closable={!disabled}
                       closeTransition={true}
